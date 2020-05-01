@@ -6,7 +6,6 @@ use Aerni\Spotify\Exceptions\SpotifyAuthException;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Carbon;
 
-
 class SpotifyAuth
 {
     private const SPOTIFY_API_TOKEN_URL = 'https://accounts.spotify.com/api/token';

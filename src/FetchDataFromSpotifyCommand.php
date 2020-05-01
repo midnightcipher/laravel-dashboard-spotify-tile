@@ -2,7 +2,6 @@
 
 namespace Ashbakernz\SpotifyTile;
 
-use Ashbakernz\SpotifyTile\Spotify;
 use Illuminate\Console\Command;
 
 class FetchDataFromSpotifyCommand extends Command

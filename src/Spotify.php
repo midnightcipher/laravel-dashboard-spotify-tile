@@ -2,7 +2,6 @@
 
 namespace Ashbakernz\SpotifyTile;
 
-
 use Illuminate\Support\Facades\Http;
 
 class Spotify
@@ -35,7 +34,6 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
             ])->post(self::SPOTIFY_API_TOKEN_URL, [
                 'grant_type' => 'client_credentials',
             ]);
-
         } catch (RequestException $e) {
             $status = $e->getCode();
             $message = $errorResponse->error_description;
@@ -56,9 +54,8 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
             ])->post(self::SPOTIFY_API_TOKEN_URL, [
                 'grant_type' => 'authorization_code',
                 'code' => $this->authCode,
-                'redirect_uri' => $this->redirect_uri
+                'redirect_uri' => $this->redirect_uri,
             ]);
-
         } catch (RequestException $e) {
             $status = $e->getCode();
             $message = $errorResponse->error_description;
@@ -69,7 +66,6 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
         $body = json_decode((string) $response->getBody());
         dd($body);
         $this->accessToken = $body->access_token;
-
     }
 
     public function generateAuthCode()
@@ -79,20 +75,20 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
         ])->post(self::SPOTIFY_API_TOKEN_URL, [
             'grant_type' => 'authorization_code',
             'code' => $this->authCode,
-            'redirect_uri' => $this->redirect_uri
+            'redirect_uri' => $this->redirect_uri,
         ]);
     }
 
     public function getSpotfiyData(): array
     {
-        if(!$this->accessToken){
+        if (! $this->accessToken) {
             $this->generateAccessTokenFromAuthCode();
         }
 
 //        $this->getCurrentlyPlaying();
 
         return [
-            $this->accessToken
+            $this->accessToken,
         ];
     }
 
@@ -102,9 +98,7 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
 
         $response = Http::withToken($this->accessToken)->withHeaders([
             'Accept' => 'application/json',
-            'Content-Type' => 'application/json'
+            'Content-Type' => 'application/json',
         ])->get($endpoint)->json();
-
     }
-
 }

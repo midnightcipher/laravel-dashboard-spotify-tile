@@ -5,12 +5,10 @@ namespace Ashbakernz\SpotifyTile;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 
-
 class SpotifyTileServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
         if ($this->app->runningInConsole()) {
             $this->commands([
                 FetchDataFromSpotifyCommand::class,
