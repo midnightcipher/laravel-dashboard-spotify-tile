@@ -17,7 +17,6 @@
     ],
     "require": {
         "php": "^7.4",
-        "jwilsson/spotify-web-api-php": "^3.4",
         "spatie/laravel-dashboard": "^1.0"
     },
     "require-dev": {
