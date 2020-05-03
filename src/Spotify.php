@@ -2,9 +2,9 @@
 
 namespace Ashbakernz\SpotifyTile;
 
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class Spotify
 {
@@ -47,7 +47,7 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
         }
         $response = collect($response);
 
-        if($response == null) {
+        if ($response == null) {
             return [];
         }
 
@@ -59,6 +59,5 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
         ];
 
         return $data;
-
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-use Ashbakernz\SpotifyTile\Spotify;
 use Ashbakernz\SpotifyTile\SpotifyController;
 
 Route::get('/spotify/authorize', [SpotifyController::class, 'authorizeApplication']);

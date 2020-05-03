@@ -49,5 +49,4 @@ class SpotifyStore
     {
         return $this->tile->getData('spotifyData.trackArtist');
     }
-
 }

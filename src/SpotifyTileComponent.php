@@ -17,7 +17,6 @@ class SpotifyTileComponent extends Component
 
     public function render()
     {
-
         $spotifyStore = SpotifyStore::make();
 
         return view('dashboard-spotify-tile::tile', [
@@ -25,7 +24,7 @@ class SpotifyTileComponent extends Component
             'isPlaying' => $spotifyStore->getIsPlaying(),
             'trackName' => $spotifyStore->getTrackName(),
             'albumImage' => $spotifyStore->getAlbumImage(),
-            'artists' => $spotifyStore->getArtists()
+            'artists' => $spotifyStore->getArtists(),
         ]);
     }
 }

@@ -4,7 +4,6 @@ namespace Ashbakernz\SpotifyTile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Log\Logger;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -15,7 +14,7 @@ class SpotifyController extends Controller
     {
         $scopes = 'user-read-private user-read-email streaming app-remote-control user-read-playback-state user-read-currently-playing 
 user-modify-playback-state user-read-playback-position user-read-recently-played';
-        $scopes = str_replace(array("\r", "\n"), '', $scopes);
+        $scopes = str_replace(["\r", "\n"], '', $scopes);
 
         $url = "https://accounts.spotify.com/authorize?client_id=". config('dashboard.tiles.spotify.client_id') ."&grant_type=authorization_code&response_type=code&scope=" . $scopes . "&redirect_uri=". config('app.url') . "/spotify/callback";
 
@@ -24,7 +23,7 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
 
     public function storeTokens(Request $request)
     {
-        if($request->error == 'access_denied'){
+        if ($request->error == 'access_denied') {
             abort('403', 'access_denied');
         }
 
@@ -86,6 +85,4 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
         Cache::put('accessToken', $body->access_token);
         Log::info('Access token updated successfully');
     }
-
 }
-
