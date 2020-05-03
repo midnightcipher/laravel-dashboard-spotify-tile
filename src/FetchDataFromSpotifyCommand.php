@@ -20,12 +20,9 @@ class FetchDataFromSpotifyCommand extends Command
             config('dashboard.tiles.spotify.auth_code'),
         );
 
-        dd($spotify->getSpotfiyData());
+        $spotifyData = $spotify->getSpotfiyData();
 
-
-        // $myData = Http::get($endpoint)->json();
-
-        // MyStore::make()->setData($myData);
+        SpotifyStore::make()->setData($spotifyData);
 
         $this->info('All done!');
     }

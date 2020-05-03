@@ -20,13 +20,34 @@ class SpotifyStore
 
     public function setData(array $data): self
     {
-        $this->tile->putData('key', $data);
+        $this->tile->putData('spotifyData', $data);
 
         return $this;
     }
 
     public function getData(): array
     {
-        return$this->tile->getData('key') ?? [];
+        return $this->tile->getData('key') ?? [];
     }
+
+    public function getIsPlaying()
+    {
+        return $this->tile->getData('spotifyData.isPlaying');
+    }
+
+    public function getTrackName()
+    {
+        return $this->tile->getData('spotifyData.trackName');
+    }
+
+    public function getAlbumImage()
+    {
+        return $this->tile->getData('spotifyData.images.url');
+    }
+
+    public function getArtists()
+    {
+        return $this->tile->getData('spotifyData.trackArtist');
+    }
+
 }

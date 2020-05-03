@@ -2,6 +2,7 @@
 
 namespace AshBakernz\SpotifyTile;
 
+use Ashbakernz\SpotifyTile\SpotifyStore;
 use Livewire\Component;
 
 class SpotifyTileComponent extends Component
@@ -16,9 +17,15 @@ class SpotifyTileComponent extends Component
 
     public function render()
     {
-//        return view('dashboard-spotify-tile::tile');
+
+        $spotifyStore = SpotifyStore::make();
+
         return view('dashboard-spotify-tile::tile', [
-        'refreshIntervalInSeconds' => config('dashboard.tiles.spotify.refresh_interval_in_seconds') ?? 60,
-]);
+            'refreshIntervalInSeconds' => config('dashboard.tiles.spotify.refresh_interval_in_seconds') ?? 60,
+            'isPlaying' => $spotifyStore->getIsPlaying(),
+            'trackName' => $spotifyStore->getTrackName(),
+            'albumImage' => $spotifyStore->getAlbumImage(),
+            'artists' => $spotifyStore->getArtists()
+        ]);
     }
 }

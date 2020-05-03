@@ -4,9 +4,9 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/ashbakernz/laravel-dashboard-spotify-tile/run-tests?label=tests)](https://github.com/ashbakernz/laravel-dashboard-spotify-tile/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/ashbakernz/laravel-dashboard-spotify-tile.svg?style=flat-square)](https://packagist.org/packages/ashbakernz/laravel-dashboard-spotify-tile)
 
-This tile displays now playing infomation from spotify.
+This tile displays "now playing" infomation from spotify.
 
-This tile can be used on [the Laravel Dashboard]https://docs.spatie.be/laravel-dashboard).
+This tile can be used on [the Laravel Dashboard](https://docs.spatie.be/laravel-dashboard).
 
 ## Installation
 
@@ -20,25 +20,28 @@ In the dashboard config file, you must add this configuration in the tiles key.
 
 ```php
     'spotify' => [
-        'spotify_client_id' => env('SPOTIFY_CLIENT_ID'),
-        'spotify_client_secret' => env('SPOTIFY_CLIENT_SECRET'),
+        'client_id' => env('SPOTIFY_CLIENT_ID'),
+        'secret' => env('SPOTIFY_SECRET'),
+        'refresh_interval_in_seconds' => 60,
     ]
 ```
 #### Getting `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`
 Sign up at https://developer.spotify.com/dashboard and register your application to obtain `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`.
 
-Once you have setup your application please go to the [spotify dashboard](https://developer.spotify.com/dashboard/applications), select your application and click "EDIT SETTINGS" in the top right. You will then need to add your project environment URLs to the "Redirect URIs
+Once you have setup your application please go to the [spotify dashboard](https://developer.spotify.com/dashboard/applications), select your application and click "EDIT SETTINGS" in the top right. You will then need to add the following urls based on your environments to the "Redirect URIs
 " section and then hit save. This will allow us to authenticate correctly in the next step.
 
-
-#### Getting `SPOTIFY_AUTHORIZATION_CODE`
-Due to the spotify api restriction getting the authorization code is a little bit tedious.  
-To get the `SPOTIFY_AUTHORIZATION_CODE` please use the to following URL, make sure to replace the `SPOTIFY_CLIENT_ID` and `YOUR_REDIRECT_URI` (this should be the same as the one in the settings for the application in the spotify dashboard) with your own. Then go to the link your browser and authenicate your account.
-```txt
-https://accounts.spotify.com/authorize?client_id=SPOTIFY_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI&grant_type=authorization_code&scope=user-read-private user-read-email streaming app-remote-control user-read-playback-state user-read-currently-playing 
-user-modify-playback-state user-read-playback-position user-read-recently-played
+Redirect URI example:
+```bash
+https://yourdomain.com/spotify/callback
 ```
-Once you have gone to this URL you will see in the URL bar `?code=YOUR_AUTH_CODE` copy just the code into the `.env` or `dashboard.php` config file.
+
+Once this is complete please head to the `/spotify/authorize` route on your dashboard in a browser and this will allow you to authenicate your spotify account. 
+
+Once authenicated setup is complete and you may use.
+
+## Bugs
+If the tile is displaying incorrectly please head to the `/spotify/refresh` route in a browser to refresh your spotify access token manually. (a is already setup command is setup to do this every 30mins)
 
 ## Usage
 
