@@ -28,8 +28,8 @@ In the dashboard config file, you must add this configuration in the tiles key.
         'refresh_interval_in_seconds' => 60,
     ]
 ```
-#### Getting `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`
-Sign up at https://developer.spotify.com/dashboard and register your application to obtain `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`.
+#### Getting `SPOTIFY_CLIENT_ID` and `SPOTIFY_SECRET`
+Sign up at https://developer.spotify.com/dashboard and register your application to obtain `SPOTIFY_CLIENT_ID` and `SPOTIFY_SECRET`.
 
 Once you have setup your application please go to the [spotify dashboard](https://developer.spotify.com/dashboard/applications), select your application and click "EDIT SETTINGS" in the top right. You will then need to add the following urls based on your environments to the "Redirect URIs
 " section and then hit save. This will allow us to authenticate correctly in the next step.
