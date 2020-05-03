@@ -8,6 +8,9 @@ This tile displays "now playing" infomation from spotify.
 
 This tile can be used on [the Laravel Dashboard](https://docs.spatie.be/laravel-dashboard).
 
+![laravel dashboard spotify tile](https://ashbaker.dev/assets/packages/laravel-dashboard-spotfiy-tile.png)
+
+
 ## Installation
 
 You can install the package via composer:
