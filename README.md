@@ -39,15 +39,6 @@ Redirect URI example:
 https://yourdomain.com/spotify/callback
 ```
 
-Once this is complete please head to the `/spotify/authorize` route on your dashboard in a browser and this will allow you to authenicate your spotify account. 
-
-Once authenicated setup is complete and you may use.
-
-## Bugs
-If the tile is displaying incorrectly please head to the `/spotify/refresh` route in a browser to refresh your spotify access token manually. (a is already setup command is setup to do this every 30mins)
-
-## Usage
-
 In your dashboard view you use the `livewire:spotify-tile` component.
 
 ```html
@@ -55,6 +46,13 @@ In your dashboard view you use the `livewire:spotify-tile` component.
     <livewire:spotify-tile position="a1:a1" />
 </x-dashboard>
 ```
+
+Once this is complete please head to the `/spotify/authorize` route on your dashboard in a browser and this will allow you to authenicate your spotify account. 
+
+Once authenicated setup is complete and you may use.
+
+## Bugs
+If the tile is displaying incorrectly please head to the `/spotify/refresh` route in a browser to refresh your spotify access token manually. (a is already setup command is setup to do this every 30mins)
 
 ## Testing
 
