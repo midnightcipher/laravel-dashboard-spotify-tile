@@ -21,7 +21,7 @@ class SpotifyTileServiceProvider extends ServiceProvider
         ], 'dashboard-spotify-tile-views');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'dashboard-spotify-tile');
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutesFrom(__DIR__.'/Routes.php');
 
         Livewire::component('spotify-tile', SpotifyTileComponent::class);
     }
