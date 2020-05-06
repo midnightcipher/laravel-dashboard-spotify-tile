@@ -49,7 +49,18 @@ In your dashboard view you use the `livewire:spotify-tile` component.
 
 Once this is complete please head to the `/spotify/authorize` route on your dashboard in a browser and this will allow you to authenicate your spotify account. 
 
-Once authenicated setup is complete and you may use.
+In `app\Console\Kernel.php` you should schedule the following commands.
+
+```php
+protected function schedule(Schedule $schedule)
+{
+    // ...
+            $schedule->command(\Ashbakernz\SpotifyTile\FetchDataFromSpotifyCommand::class)->everyMinute();
+            $schedule->command(\Ashbakernz\SpotifyTile\RefeshAccessTokenSpotifyCommand::class)->everyFifteenMinutes();
+}
+```
+
+Setup is complete!
 
 ## Bugs
 If the tile is displaying incorrectly please head to the `/spotify/refresh` route in a browser to refresh your spotify access token manually. (a is already setup command is setup to do this every 30mins)
