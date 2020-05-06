@@ -5,11 +5,11 @@ namespace Ashbakernz\SpotifyTile;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
-class RefeshAccessTokenSpotifyCommand extends Command
+class RefreshAccessTokenSpotifyCommand extends Command
 {
     protected $signature = 'dashboard:refresh-access-token-spotify';
 
-    protected $description = 'Refresh spotify  access token';
+    protected $description = 'Refresh spotify access token';
 
     public function handle()
     {
