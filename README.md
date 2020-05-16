@@ -81,7 +81,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
+If you discover any security related issues, please email ashbakernz@gmail.com instead of using the issue tracker.
 
 ## Credits
 - [Ash Baker](https://github.com/ashbakernz)
