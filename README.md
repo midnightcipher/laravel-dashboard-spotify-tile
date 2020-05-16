@@ -63,7 +63,7 @@ protected function schedule(Schedule $schedule)
 Setup is complete!
 
 ## Bugs
-If the tile is displaying incorrectly please head to the `/spotify/refresh` route in a browser to refresh your spotify access token manually. (a is already setup command is setup to do this every 30mins)
+If the tile is displaying incorrectly please head to the `/spotify/refresh` route in a browser to refresh your spotify access token manually. (a command is already setup to do this every 30 mins via scheduler)
 
 ## Testing
 
