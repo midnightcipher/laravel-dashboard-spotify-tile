@@ -56,7 +56,7 @@ protected function schedule(Schedule $schedule)
 {
     // ...
             $schedule->command(\Ashbakernz\SpotifyTile\FetchDataFromSpotifyCommand::class)->everyMinute();
-            $schedule->command(\Ashbakernz\SpotifyTile\RefeshAccessTokenSpotifyCommand::class)->everyFifteenMinutes();
+            $schedule->command(\Ashbakernz\SpotifyTile\RefreshAccessTokenSpotifyCommand::class)->everyFifteenMinutes();
 }
 ```
 
