@@ -12,7 +12,7 @@ class SpotifyTileServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 FetchDataFromSpotifyCommand::class,
-                RefeshAccessTokenSpotifyCommand::class,
+                RefreshAccessTokenSpotifyCommand::class,
             ]);
         }
 
