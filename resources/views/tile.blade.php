@@ -14,18 +14,14 @@
                 <div>
                     <div class="flex w-full justify-center space-x-4 items-center">
                         <span class="text-xs text-dimmed">
-                          @foreach($artists as $artist)
-                                @if(count($artists) > 1)
-                                    {{ $artist['name'] }},
-                                @else
-                                    {{ $artist['name'] }}
-                                @endif
-                            @endforeach
+                            {{ implode(', ', array_column($artists, 'name')) }}
                         </span>
                     </div>
                 </div>
         @else
-
+            @if(!cache()->has('refreshToken'))
+                <a class="btn border rounded px-4 py-1 border-white hover:opacity-75" href="{{route('spotify.authorize') }}" target="_blank">Authorize</a>
+            @endif
             <div class="flex">
                 <div class="w-full pt-8 bt-0">
                     <div class="flex justify-center text-2xl text-grey-darkest font-medium">
