@@ -14,7 +14,7 @@
                 <div>
                     <div class="flex w-full justify-center space-x-4 items-center">
                         <span class="text-xs text-dimmed">
-                            {{ implode(', ', array_column($artists, 'name')) }}
+                            {{ implode(', ', array_column($artists ?? [], 'name')) }}
                         </span>
                     </div>
                 </div>
