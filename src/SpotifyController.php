@@ -12,12 +12,27 @@ class SpotifyController extends Controller
 {
     public function authorizeApplication()
     {
-        $scopes = 'user-read-private user-read-email streaming app-remote-control user-read-playback-state user-read-currently-playing 
-user-modify-playback-state user-read-playback-position user-read-recently-played';
-        $scopes = str_replace(["\r", "\n"], '', $scopes);
+        $scopes = [
+            'user-read-private',
+            'user-read-email',
+            'user-read-playback-state',
+            'user-read-currently-playing', // isn't this the only one necessary?
+            'user-modify-playback-state',
+            'user-read-playback-position',
+            'user-read-recently-played',
+            'app-remote-control',
+            'streaming',
+        ];
 
-        $url = "https://accounts.spotify.com/authorize?client_id=". config('dashboard.tiles.spotify.client_id') ."&grant_type=authorization_code&response_type=code&scope=" . $scopes . "&redirect_uri=". config('app.url') . "/spotify/callback";
-
+        $baseUrl = "https://accounts.spotify.com/authorize";
+        $url = $baseUrl . '?' . http_build_query([
+            'client_id' => config('dashboard.tiles.spotify.client_id'),
+            'grant_type' => 'authorization_code',
+            'response_type' => 'code',
+            'scope' => implode(' ', $scopes),
+            'redirect_uri' => route('spotify.callback'),
+        ]);
+        
         return redirect()->away($url);
     }
 
@@ -37,7 +52,7 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
                 'client_id' => $clientId,
                 'grant_type' => 'authorization_code',
                 'code' => $request->code,
-                'redirect_uri' => config('app.url') . '/spotify/callback',
+                'redirect_uri' => route('spotify.callback'),
             ]);
         } catch (RequestException $e) {
             $status = $e->getCode();
@@ -69,7 +84,7 @@ user-modify-playback-state user-read-playback-position user-read-recently-played
                 'client_id' => $clientId,
                 'grant_type' => 'refresh_token',
                 'refresh_token' => $refreshToken,
-                'redirect_uri' => config('app.url') . '/spotify/callback',
+                'redirect_uri' => route('spotify.callback'),
             ]);
         } catch (RequestException $e) {
             $status = $e->getCode();
